@@ -19,3 +19,13 @@ Thu 28 Mar 2024 03:05:29 PM UTC:
  tests:  0|6
 total_score: 0/70
 56d19ee
+Thu 28 Mar 2024 03:15:34 PM UTC: 
+ list.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+In file included from test.c:5:
+list.c: In function ‘pushFront’:
+list.c:65:9: error: ‘List’ {aka ‘struct List’} has no member named ‘prev’
+   65 |     list->prev = newNode;
+      |         ^~
+Compilation failed
+8330390
