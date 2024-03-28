@@ -39,7 +39,6 @@ List * createList() {
 
 void * firstList(List * list) {
   if (list == NULL || list->head == NULL) {
-    
     return NULL;
   }
   return list->head->data;
@@ -86,21 +85,16 @@ void pushBack(List * list, void * data) {
 }
 
 void pushCurrent(List * list, void * data) {
-  if (list == NULL || list->current == NULL) {
-      return;
-  }
-
   Node *newNode = createNode(data);
-  
+
   newNode->data = data;
   newNode->next = NULL;
 
-  
   newNode->next = list->current->next;
   list->current->next = newNode;
 
   if (list->current == list->tail) {
-      list->tail = newNode;
+    list->tail = newNode;
   }
 }
 
