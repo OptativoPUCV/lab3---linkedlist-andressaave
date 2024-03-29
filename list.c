@@ -133,10 +133,18 @@ void * popCurrent(List * list) {
 
   Node *prevNode = NULL;
   Node *currNode = list->head;
+
   
-  while (currNode != list->current) {
+  while (currNode != NULL && currNode != list->current) {
     prevNode = currNode;
     currNode = currNode->next;
+  }
+
+  
+  if (prevNode == NULL) {
+    list->head = list->current->next;
+  } else {
+    prevNode->next = list->current->next;
   }
 
   
@@ -145,16 +153,13 @@ void * popCurrent(List * list) {
   }
 
   
-  if (prevNode != NULL) {
-    prevNode->next = list->current->next;
-  } else {
-    
-    list->head = list->current->next;
+  if (list->head == NULL) {
+    list->tail = NULL;
   }
 
   void *data = list->current->data; 
   free(list->current); 
-  list->current = NULL; 
+  list->current = NULL;
 
   return data; 
 }
